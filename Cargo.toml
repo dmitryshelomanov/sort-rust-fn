@@ -1,0 +1,6 @@
+[package]
+name = "sort"
+version = "0.1.0"
+authors = ["Shelomanov Dmitry <userbq201@mail.ru>"]
+
+[dependencies]
