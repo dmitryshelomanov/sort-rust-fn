@@ -1,10 +1,8 @@
-extern crate sort;
-
-use sort::Sort;
+extern crate base_sort;
 
 #[cfg(test)]
 pub mod tests {
-    use super::*;
+    use base_sort::BaseSort;
 
     #[test]
     pub fn bubble_sort_test() {

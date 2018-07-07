@@ -1,4 +1,4 @@
-pub trait Sort {
+pub trait BaseSort {
     fn bubble_sort(&mut self);
     fn inerted_sort(&mut self);
     fn shake_sort(&mut self);
@@ -6,7 +6,7 @@ pub trait Sort {
     fn comb_sort(&mut self);
 }
 
-impl<T: Ord> Sort for Vec<T> {
+impl<T: Ord> BaseSort for Vec<T> {
     fn bubble_sort(&mut self) {
         let len = self.len();
 
