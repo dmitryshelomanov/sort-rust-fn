@@ -42,7 +42,7 @@ impl<T: Ord> BaseSort for Vec<T> {
                 }
             }
 
-            right_index = right_index - 1;
+            right_index -= 1;
 
             for i in (left_index..right_index).rev() {
                 if i > 0 && self[i] < self[i - 1] {
@@ -50,7 +50,7 @@ impl<T: Ord> BaseSort for Vec<T> {
                 }
             }
 
-            left_index = left_index + 1;
+            left_index += 1;
         }
     }
 
@@ -90,8 +90,8 @@ impl<T: Ord> BaseSort for Vec<T> {
                 }
             }
 
-            toggle_len = toggle_len - 1;
-            count = count + 1;
+            toggle_len -= 1;
+            count += 1;
         }
     }
 }
