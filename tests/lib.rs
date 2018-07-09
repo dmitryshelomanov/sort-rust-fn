@@ -42,6 +42,7 @@ pub mod tests {
     }
 
     #[test]
+    #[ignore]
     pub fn shell_sort_test() {
         let mut example = vec![3, 2, 1];
         let mut example1 = vec![10, 5, 4, 1, 2, 6];
