@@ -4,48 +4,91 @@ extern crate base_sort;
 pub mod tests {
     use base_sort::BaseSort;
 
+    thread_local!(static EXAMPLE_RESULT: Vec<i32> = vec![1, 2, 3]);
+    thread_local!(static EXAMPLE1_RESULT: Vec<i32> = vec![1, 2, 4, 5, 6, 10]);
+
     #[test]
     pub fn bubble_sort_test() {
-        let mut data = vec![3, 2, 1];
+        let mut example = vec![3, 2, 1];
+        let mut example1 = vec![10, 5, 4, 1, 2, 6];
 
-        data.bubble_sort();
+        example.bubble_sort();
+        example1.bubble_sort();
 
-        assert_eq!(vec![1, 2, 3], data);
+        EXAMPLE_RESULT.with(|e| {
+            assert_eq!(*e, example);
+        });
+
+        EXAMPLE1_RESULT.with(|e| {
+            assert_eq!(*e, example1);
+        });
     }
 
     #[test]
     pub fn inerted_sort_test() {
-        let mut data = vec![3, 2, 1];
+        let mut example = vec![3, 2, 1];
+        let mut example1 = vec![10, 5, 4, 1, 2, 6];
 
-        data.inerted_sort();
+        example.inerted_sort();
+        example1.inerted_sort();
 
-        assert_eq!(vec![1, 2, 3], data);
+        EXAMPLE_RESULT.with(|e| {
+            assert_eq!(*e, example);
+        });
+
+        EXAMPLE1_RESULT.with(|e| {
+            assert_eq!(*e, example1);
+        });
     }
 
     #[test]
     pub fn shake_sort_test() {
-        let mut data = vec![3, 2, 1];
+        let mut example = vec![3, 2, 1];
+        let mut example1 = vec![10, 5, 4, 1, 2, 6];
 
-        data.shake_sort();
+        example.shake_sort();
+        example1.shake_sort();
 
-        assert_eq!(vec![1, 2, 3], data);
+        EXAMPLE_RESULT.with(|e| {
+            assert_eq!(*e, example);
+        });
+
+        EXAMPLE1_RESULT.with(|e| {
+            assert_eq!(*e, example1);
+        });
     }
 
     #[test]
     pub fn odd_even_sort_test() {
-        let mut data = vec![3, 2, 1];
+        let mut example = vec![3, 2, 1];
+        let mut example1 = vec![10, 5, 4, 1, 2, 6];
 
-        data.odd_even_sort();
+        example.odd_even_sort();
+        example1.odd_even_sort();
 
-        assert_eq!(vec![1, 2, 3], data);
+        EXAMPLE_RESULT.with(|e| {
+            assert_eq!(*e, example);
+        });
+
+        EXAMPLE1_RESULT.with(|e| {
+            assert_eq!(*e, example1);
+        });
     }
 
     #[test]
     pub fn comb_sort_test() {
-        let mut data = vec![3, 2, 1];
+        let mut example = vec![3, 2, 1];
+        let mut example1 = vec![10, 5, 4, 1, 2, 6];
 
-        data.bubble_sort();
+        example.comb_sort();
+        example1.comb_sort();
 
-        assert_eq!(vec![1, 2, 3], data);
+        EXAMPLE_RESULT.with(|e| {
+            assert_eq!(*e, example);
+        });
+
+        EXAMPLE1_RESULT.with(|e| {
+            assert_eq!(*e, example1);
+        });
     }
 }
