@@ -10,15 +10,15 @@ pub trait BaseSort {
 impl<T: Ord> BaseSort for Vec<T> {
     fn bubble_sort(&mut self) {
         let len = self.len();
-        let mut swipped = true;
+        let mut swapped = true;
 
-        while swipped {
-            swipped = false;
+        while swapped {
+            swapped = false;
 
             for j in 1..len {
                 if self[j - 1] > self[j] {
                     self.swap(j - 1, j);
-                    swipped = true;
+                    swapped = true;
                 }
             }
         }
@@ -82,17 +82,17 @@ impl<T: Ord> BaseSort for Vec<T> {
         let is_odd = |x: usize| x % 2 != 0;
         let is_even = |x: usize| x % 2 == 0;
         let len = self.len();
-        let mut swipped = true;
+        let mut swapped = true;
 
-        while swipped {
+        while swapped {
             {
                 let condition = |index: usize| if flag { is_even(index) } else { is_odd(index) };
-                swipped = false;
+                swapped = false;
 
                 for j in 1..len {
                     if condition(j - 1) && self[j - 1] > self[j] {
                         self.swap(j - 1, j);
-                        swipped = true;
+                        swapped = true;
                     }
                 }
             }
@@ -105,16 +105,16 @@ impl<T: Ord> BaseSort for Vec<T> {
         let reduction_factor: f64 = 1.247;
         let len = self.len();
         let mut gap = len;
-        let mut swipped = true;
+        let mut swapped = true;
 
-        while swipped {
+        while swapped {
             gap = (gap as f64 / reduction_factor).round() as usize;
-            swipped = false;
+            swapped = false;
 
             for j in 0..len - gap {
                 if self[j + gap] < self[j] {
                     self.swap(j + gap, j);
-                    swipped = true;
+                    swapped = true;
                 }
             }
         }
