@@ -37,20 +37,23 @@ impl<T: Ord> BaseSort for Vec<T> {
     }
 
     fn shell_sort(&mut self) {
-        let reduction_factor: f64 = 2.0;
         let len = self.len();
-        let mut toggle_len = len;
+        let mut gap = len / 2;
+        let mut swapped = true;
 
-        for i in 0..len {
-            let gap = len - (toggle_len as f64 / reduction_factor).ceil() as usize;
+        while gap >= 1 && swapped {
+            swapped = false;
 
-            for j in 0..gap {
-                if self[j + gap] < self[j] {
-                    self.swap(j + gap, j);
+            for _ in gap..len {
+                for j in (gap..len).rev() {
+                    if self[j] < self[j - gap] {
+                        self.swap(j - gap, j);
+                        swapped = true;
+                    }
                 }
             }
 
-            toggle_len -= 1;
+            gap /= 2;
         }
     }
 
