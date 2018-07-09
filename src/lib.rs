@@ -1,6 +1,7 @@
 pub trait BaseSort {
     fn bubble_sort(&mut self);
     fn inerted_sort(&mut self);
+    fn shell_sort(&mut self);
     fn shake_sort(&mut self);
     fn odd_even_sort(&mut self);
     fn comb_sort(&mut self);
@@ -28,6 +29,24 @@ impl<T: Ord> BaseSort for Vec<T> {
                     self.swap(j - 1, j);
                 }
             }
+        }
+    }
+
+    fn shell_sort(&mut self) {
+        let reduction_factor: f64 = 2.0;
+        let len = self.len();
+        let mut toggle_len = len.clone();
+
+        for i in 0..len {
+            let step = (toggle_len as f64 / reduction_factor).ceil() as usize;
+
+            for j in (0..i).rev() {
+                if self[j + step] < self[j] {
+                    self.swap(j + step, j);
+                }
+            }
+
+            toggle_len -= 1;
         }
     }
 
@@ -77,21 +96,19 @@ impl<T: Ord> BaseSort for Vec<T> {
 
     fn comb_sort(&mut self) {
         let reduction_factor: f64 = 1.24;
-        let len = self.len() - 1;
+        let len = self.len();
         let mut toggle_len = len.clone();
-        let mut count = 1;
 
-        for _ in 0..len {
+        for i in 0..len {
             let step = (toggle_len as f64 / reduction_factor).ceil() as usize;
 
-            for j in 0..count {
+            for j in 0..i {
                 if self[j + step] < self[j] {
                     self.swap(j + step, j);
                 }
             }
 
             toggle_len -= 1;
-            count += 1;
         }
     }
 }

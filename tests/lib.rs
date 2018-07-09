@@ -42,6 +42,23 @@ pub mod tests {
     }
 
     #[test]
+    pub fn shell_sort_test() {
+        let mut example = vec![3, 2, 1];
+        let mut example1 = vec![10, 5, 4, 1, 2, 6];
+
+        example.shell_sort();
+        example1.shell_sort();
+
+        EXAMPLE_RESULT.with(|e| {
+            assert_eq!(*e, example);
+        });
+
+        EXAMPLE1_RESULT.with(|e| {
+            assert_eq!(*e, example1);
+        });
+    }
+
+    #[test]
     pub fn shake_sort_test() {
         let mut example = vec![3, 2, 1];
         let mut example1 = vec![10, 5, 4, 1, 2, 6];
