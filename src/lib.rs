@@ -48,7 +48,6 @@ impl<T: Ord> BaseSort for Vec<T> {
                 let mut j = i;
 
                 while j >= gap && self[j] < self[j - gap] {
-                    println!("swap j {} gap {}", j, gap);
                     self.swap(j, j - gap);
                     swapped = true;
                     j -= gap;

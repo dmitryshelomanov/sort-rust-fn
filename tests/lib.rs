@@ -1,8 +1,10 @@
 extern crate base_sort;
 
+use base_sort::BaseSort;
+
 #[cfg(test)]
 pub mod tests {
-    use base_sort::BaseSort;
+    use super::*;
 
     thread_local!(static EXAMPLE_RESULT: Vec<i32> = vec![1, 2, 3]);
     thread_local!(static EXAMPLE1_RESULT: Vec<i32> = vec![1, 2, 4, 5, 6, 10]);
