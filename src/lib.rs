@@ -10,11 +10,15 @@ pub trait BaseSort {
 impl<T: Ord> BaseSort for Vec<T> {
     fn bubble_sort(&mut self) {
         let len = self.len();
+        let mut swapped = true;
 
-        for _ in 0..len {
+        while swapped {
+            swapped = false;
+
             for j in 1..len {
                 if self[j - 1] > self[j] {
                     self.swap(j - 1, j);
+                    swapped = true;
                 }
             }
         }
@@ -35,14 +39,14 @@ impl<T: Ord> BaseSort for Vec<T> {
     fn shell_sort(&mut self) {
         let reduction_factor: f64 = 2.0;
         let len = self.len();
-        let mut toggle_len = len.clone();
+        let mut toggle_len = len;
 
         for i in 0..len {
-            let step = (toggle_len as f64 / reduction_factor).ceil() as usize;
+            let gap = len - (toggle_len as f64 / reduction_factor).ceil() as usize;
 
-            for j in (0..i).rev() {
-                if self[j + step] < self[j] {
-                    self.swap(j + step, j);
+            for j in 0..gap {
+                if self[j + gap] < self[j] {
+                    self.swap(j + gap, j);
                 }
             }
 
@@ -55,7 +59,7 @@ impl<T: Ord> BaseSort for Vec<T> {
         let mut left_index = 0;
 
         while left_index < right_index {
-            for i in left_index..right_index - 1{
+            for i in left_index..right_index - 1 {
                 if self[i] > self[i + 1] {
                     self.swap(i, i + 1);
                 }
@@ -78,14 +82,17 @@ impl<T: Ord> BaseSort for Vec<T> {
         let is_odd = |x: usize| x % 2 != 0;
         let is_even = |x: usize| x % 2 == 0;
         let len = self.len();
+        let mut swapped = true;
 
-        for _ in 0..len {
+        while swapped {
             {
                 let condition = |index: usize| if flag { is_even(index) } else { is_odd(index) };
+                swapped = false;
 
-                for j in 1..len{
+                for j in 1..len {
                     if condition(j - 1) && self[j - 1] > self[j] {
                         self.swap(j - 1, j);
+                        swapped = true;
                     }
                 }
             }
@@ -95,20 +102,21 @@ impl<T: Ord> BaseSort for Vec<T> {
     }
 
     fn comb_sort(&mut self) {
-        let reduction_factor: f64 = 1.24;
+        let reduction_factor: f64 = 1.247;
         let len = self.len();
-        let mut toggle_len = len.clone();
+        let mut gap = len;
+        let mut swapped = true;
 
-        for i in 0..len {
-            let step = (toggle_len as f64 / reduction_factor).ceil() as usize;
+        while swapped {
+            gap = (gap as f64 / reduction_factor).round() as usize;
+            swapped = false;
 
-            for j in 0..i {
-                if self[j + step] < self[j] {
-                    self.swap(j + step, j);
+            for j in 0..len - gap {
+                if self[j + gap] < self[j] {
+                    self.swap(j + gap, j);
+                    swapped = true;
                 }
             }
-
-            toggle_len -= 1;
         }
     }
 }
