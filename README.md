@@ -12,6 +12,7 @@
         shake_sort,
         odd_even_sort,
         comb_sort,
+        shell_sort
     */
     use base_sort::*;
     
