@@ -1,6 +1,6 @@
 pub trait BaseSort {
     fn bubble_sort(&mut self);
-    fn inerted_sort(&mut self);
+    fn insertion_sort(&mut self);
     fn shell_sort(&mut self);
     fn shake_sort(&mut self);
     fn odd_even_sort(&mut self);
@@ -26,11 +26,9 @@ impl<T: Ord> BaseSort for Vec<T> {
         }
     }
 
-    fn inerted_sort(&mut self) {
-        let len = self.len() + 1;
-
-        for i in 0..len {
-            for j in (1..i).rev() {
+    fn insertion_sort(&mut self) {
+        for i in 1..self.len() {
+            for j in (1..(i + 1)).rev() {
                 if self[j] < self[j - 1] {
                     self.swap(j - 1, j);
                 }

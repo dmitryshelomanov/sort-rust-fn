@@ -8,7 +8,7 @@
     /*
         sort_types
         bubble_sort,
-        inerted_sort,
+        insertion_sort,
         shake_sort,
         odd_even_sort,
         comb_sort,

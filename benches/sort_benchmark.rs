@@ -32,13 +32,13 @@ fn criterion_benchmark(c: &mut Criterion) {
 
     c.bench_function("inerted sort (not sorted array)", |b| {
         b.iter(|| {
-            (1..1000).rev().collect::<Vec<i32>>().inerted_sort();
+            (1..1000).rev().collect::<Vec<i32>>().insertion_sort();
         });
     });
 
     c.bench_function("inerted sort (sorted array)", |b| {
         b.iter(|| {
-            (1..1000).collect::<Vec<i32>>().inerted_sort();
+            (1..1000).collect::<Vec<i32>>().insertion_sort();
         });
     });
 
