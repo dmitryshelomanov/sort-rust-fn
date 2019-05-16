@@ -27,12 +27,12 @@ pub mod tests {
     }
 
     #[test]
-    pub fn inerted_sort_test() {
+    pub fn insertion_sort_test() {
         let mut example = vec![3, 2, 1];
         let mut example1 = vec![10, 5, 4, 1, 2, 6];
 
-        example.inerted_sort();
-        example1.inerted_sort();
+        example.insertion_sort();
+        example1.insertion_sort();
 
         EXAMPLE_RESULT.with(|e| {
             assert_eq!(*e, example);
