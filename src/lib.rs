@@ -17,16 +17,10 @@ fn is_even(x: usize) -> bool {
 
 impl<T: Ord> BaseSort for Vec<T> {
     fn bubble_sort(&mut self) {
-        let len = self.len();
-        let mut swapped = true;
-
-        while swapped {
-            swapped = false;
-
-            for j in 1..len {
-                if self[j - 1] > self[j] {
-                    self.swap(j - 1, j);
-                    swapped = true;
+        for i in 0..self.len() {
+            for j in 0..(self.len() - i - 1) {
+                if self[j] > self[j + 1] {
+                    self.swap(j + 1, j);
                 }
             }
         }
