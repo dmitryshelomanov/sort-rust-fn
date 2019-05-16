@@ -7,14 +7,6 @@ pub trait BaseSort {
     fn comb_sort(&mut self);
 }
 
-fn is_odd(x: usize) -> bool {
-    x % 2 != 0
-}
-
-fn is_even(x: usize) -> bool {
-    x % 2 == 0
-}
-
 impl<T: Ord> BaseSort for Vec<T> {
     fn bubble_sort(&mut self) {
         for i in 0..self.len() {
@@ -84,24 +76,14 @@ impl<T: Ord> BaseSort for Vec<T> {
     }
 
     fn odd_even_sort(&mut self) {
-        let mut flag = false;
-        let len = self.len();
-        let mut swapped = true;
+        for i in 0..self.len() {
+            let start_num = if i % 2 == 0 { 1 } else { 0 };
 
-        while swapped {
-            {
-                let condition = |index: usize| if flag { is_even(index) } else { is_odd(index) };
-                swapped = false;
-
-                for j in 1..len {
-                    if condition(j - 1) && self[j - 1] > self[j] {
-                        self.swap(j - 1, j);
-                        swapped = true;
-                    }
+            for j in (start_num..self.len() - 1).step_by(2) {
+                if self[j] > self[j + 1] {
+                    self.swap(j + 1, j);
                 }
             }
-
-            flag = !flag;
         }
     }
 
