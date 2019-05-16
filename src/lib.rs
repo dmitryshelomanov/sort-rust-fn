@@ -72,7 +72,9 @@ impl<T: Ord> BaseSort for Vec<T> {
             right_index -= 1;
 
             for i in (left_index..right_index).rev() {
-                if i > 0 && self[i] < self[i - 1] {
+                let condition = left_index < i && self[i] < self[i - 1];
+
+                if condition {
                     self.swap(i, i - 1);
                 }
             }
